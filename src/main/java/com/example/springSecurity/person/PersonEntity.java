@@ -17,19 +17,19 @@ public class PersonEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "person_seq")
     @Column(name = "person_Id")
-    public Long personID;
+    private Long personID;
     @Column(name = "firstName",nullable = false)
-    public String firstName;
+    private String firstName;
     @Column(name = "lastName",nullable = false)
-    public String lastName;
+    private String lastName;
     @Column(name = "ID_Number",nullable = true)
-    public String identificationID;
+    private String identificationID;
     @Column(name = "address")
-    public String address;
+    private String address;
     @Column(name = "email")
-    public String email;
+    private String email;
     @Column(name = "phone")
-    public String phoneNumber;
+    private String phoneNumber;
 
     public PersonEntity(Long personID,
                         String firstName,

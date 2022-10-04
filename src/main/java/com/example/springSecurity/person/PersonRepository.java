@@ -1,5 +1,6 @@
 package com.example.springSecurity.person;
 
+import com.example.springSecurity.user.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +14,8 @@ public interface PersonRepository extends JpaRepository<PersonEntity,Long > {
     Optional<PersonEntity> findByIdentificationID(String identificationID);
     Optional<PersonEntity> findByEmail(String email);
     Optional<PersonEntity> findByPhoneNumber(String phoneNumber);
+
+    Optional<PersonEntity> findByUser_Username(String username);
 
 }
 

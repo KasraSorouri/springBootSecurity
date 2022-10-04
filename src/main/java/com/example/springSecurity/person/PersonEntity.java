@@ -1,5 +1,6 @@
 package com.example.springSecurity.person;
 
+import com.example.springSecurity.user.UserEntity;
 import jakarta.persistence.*;
 
 @Entity
@@ -18,11 +19,11 @@ public class PersonEntity {
             generator = "person_seq")
     @Column(name = "person_Id")
     private Long personID;
-    @Column(name = "firstName",nullable = false)
+    @Column(name = "firstName", nullable = false)
     private String firstName;
-    @Column(name = "lastName",nullable = false)
+    @Column(name = "lastName", nullable = false)
     private String lastName;
-    @Column(name = "ID_Number",nullable = true)
+    @Column(name = "ID_Number", nullable = true)
     private String identificationID;
     @Column(name = "address")
     private String address;
@@ -31,12 +32,18 @@ public class PersonEntity {
     @Column(name = "phone")
     private String phoneNumber;
 
+
+    @Embedded
+    private UserEntity user;
+
+
     public PersonEntity(Long personID,
                         String firstName,
                         String lastName,
                         String identificationID,
                         String address,
                         String email,
+                        UserEntity user,
                         String phoneNumber) {
         this.personID = personID;
         this.firstName = firstName;
@@ -44,6 +51,7 @@ public class PersonEntity {
         this.identificationID = identificationID;
         this.address = address;
         this.email = email;
+        this.user = user;
         this.phoneNumber = phoneNumber;
     }
 
@@ -78,6 +86,10 @@ public class PersonEntity {
         return phoneNumber;
     }
 
+    public UserEntity getUser() {
+        return user;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -100,6 +112,10 @@ public class PersonEntity {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
     @Override

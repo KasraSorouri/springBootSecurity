@@ -36,5 +36,19 @@ public class PersonController {
         personService.addNewPerson(person);
         return ResponseEntity.ok().body(person);
     }
+    @PutMapping(path = "/{personId}")
+    public ResponseEntity EditPerson(@PathVariable("personId") Long personId,
+                                     @RequestBody PersonEntity newPerson) {
+        return ResponseEntity.ok().body(personService.updatePerson(personId,newPerson));
+    }
+
+    @DeleteMapping(path = "/{personId}")
+    public ResponseEntity DelPerson(@PathVariable("personId") Long personId) {
+
+        personService.deletePerson(personId);
+
+        return ResponseEntity.ok(personId);
+
+    }
 
 }

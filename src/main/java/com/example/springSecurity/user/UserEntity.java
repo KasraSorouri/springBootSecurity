@@ -1,7 +1,10 @@
 package com.example.springSecurity.user;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import com.example.springSecurity.person.role.RoleEntity;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Embeddable
@@ -12,6 +15,17 @@ public class UserEntity {
     private Boolean active;
     private Boolean expired;
     private Boolean locked;
+
+    @ManyToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "User_Role",
+            joinColumns = {@JoinColumn(name = "personID")},
+            inverseJoinColumns = {@JoinColumn(name = "RoleId")}
+    )
+    private Set<RoleEntity> assignedRole = new HashSet<RoleEntity>();
+
+
 
     public UserEntity(String username,
                       String password,
@@ -68,14 +82,29 @@ public class UserEntity {
         this.locked = locked;
     }
 
+    public void setAssignedRole(RoleEntity role) {
+        assignedRole.add(role);
+    }
+
+    public Set<RoleEntity> getAssignedRole() {
+        return assignedRole;
+    }
+
+    public void delAssignedRole(RoleEntity role) {
+        assignedRole.remove(role);
+    }
+    public void clearAssignedRoles() {assignedRole.clear();}
+
+
     @Override
     public String toString() {
         return "UserEntity{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", active=" + active +
-                ", expired=" + expired +
-                ", locked=" + locked +
+                ", active='" + active + '\''+
+                ", expired='" + expired + '\''+
+                ", locked='" + locked +'\''+
+                ", roles='" + assignedRole+
                 '}';
     }
 }

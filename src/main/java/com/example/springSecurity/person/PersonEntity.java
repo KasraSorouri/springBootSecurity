@@ -1,7 +1,8 @@
 package com.example.springSecurity.person;
 
 import com.example.springSecurity.user.UserEntity;
-import jakarta.persistence.*;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "persons",

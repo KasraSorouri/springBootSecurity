@@ -1,8 +1,7 @@
 package com.example.springSecurity.user;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.UniqueConstraint;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
 
 @Embeddable
@@ -14,7 +13,11 @@ public class UserEntity {
     private Boolean expired;
     private Boolean locked;
 
-    public UserEntity(String username, String password, Boolean active, Boolean expired, Boolean locked) {
+    public UserEntity(String username,
+                      String password,
+                      Boolean active,
+                      Boolean expired,
+                      Boolean locked) {
         this.username = username;
         this.password = password;
         this.active = active;

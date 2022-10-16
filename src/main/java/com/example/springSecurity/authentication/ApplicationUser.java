@@ -50,14 +50,12 @@ public class ApplicationUser implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-//        return (user.getExpired() != null ? !user.getExpired() : true);
-        return true;
+        return (user.getExpired() != null ? !user.getExpired() : true);
     }
 
     @Override
     public boolean isAccountNonLocked() {
-//        return (user.getLocked() != null ? !user.getLocked() : true);
-        return true;
+        return (user.getLocked() != null ? !user.getLocked() : true);
     }
 
     @Override
@@ -67,9 +65,7 @@ public class ApplicationUser implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-
-//        return (user.getActive() != null ? user.getActive() : true);
-        return  true;
+        return (user.getActive() != null ? user.getActive() : true);
     }
 }
 

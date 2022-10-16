@@ -58,7 +58,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 //End of JWT Section ***********
 
                 .authorizeRequests()
-                .antMatchers("/","index","/css/*","/js/*","/api/**","/api/auth/**").permitAll()
+                .antMatchers("/","index","/css/*","/js/*","/api/auth/**").permitAll()
                 .anyRequest()
                 .authenticated();
 

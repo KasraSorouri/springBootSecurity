@@ -64,7 +64,7 @@ public class authenticationController {
                     .header(HttpHeaders.AUTHORIZATION, token)
                     .contentType(MediaType.valueOf("application/json"))
                     .body(Map.of("Token", token, "username", applicationUser.getUsername(),
-                            "Authorities", applicationUser.getAuthorities(), "realName",
+                            "Authorities", applicationUser.getAuthorities(), "Detail",
                             personRepository.findByUser_Username(applicationUser.getUsername())));
 
 
